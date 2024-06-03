@@ -1,41 +1,38 @@
-* {
-  box-sizing: border-box;
-}
+/* General body settings */
 
 body {
   background-color: #010f22;
   font-family: sans-serif;
   padding: 0;
   margin: 0;
+  margin-bottom: 20vmin;
 }
 
-h1 {
-  background: -webkit-linear-gradient(#eee, #fd0505);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h3 {
-  color: white;
-}
+/* Top navigation bar */
 
 .topnav {
   background: linear-gradient(#f735352c 10%, #00040e 90%);
   background-color: #00040e;
   display: flex;
-  flex: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 3vmin;
-
+  padding: 2vmin;
 }
+
+/* topnav links */
 
 .topnav a {
   color: rgb(221, 32, 32);
   text-decoration: none;
   padding: 14px 16px; 
 }
+
+.topnav a:hover {
+  transition-duration: 0.2s;
+  color: rgba(255, 0, 0, 0.501);
+}
+
+/* Site logo top left */
 
 .site-logo {
   background: -webkit-linear-gradient(#eee, #fd0505);
@@ -44,8 +41,31 @@ h3 {
   -webkit-text-fill-color: transparent;
   font-size: 2vmax;
   font-weight: 700;
-  
 }
+
+/* Search bar */
+
+form {
+  width: 25vw;
+  height: 5vmin;
+  background-color: #584f6973;
+  border-radius: 2.5vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  all: unset;
+  font: 2vmin system-ui;
+  color: white;
+  height: 100%;
+  width: 100%;
+  padding: 6px 6px;
+
+}
+
+/* Navigation menu top right */
 
 nav ul {
   list-style-type: none;
@@ -58,25 +78,16 @@ nav li {
 
 }
 
-form {
-  width: 20vmax;
-  height: 5vmin;
-  background-color: #584f6973;
-  border-radius: 2.5vmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Banner title */
+
+h1 {
+  background: -webkit-linear-gradient(#eee, #fd0505);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-input {
-  all: unset;
-  font: 15px system-ui;
-  color: white;
-  height: 100%;
-  width: 100%;
-  padding: 6px 12px;
-
-}
+/* Banner background */
 
 .bgimg::before {
     
@@ -87,7 +98,7 @@ input {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-image:url("collage2.jpg");
+  background-image:url("collage.jpg");
   opacity: 0.15;
   background-repeat:repeat;
 }
@@ -100,30 +111,226 @@ header {
   font-size: 5vmax;
   letter-spacing: 2vw;
   margin-bottom: 10px;
-  
 }
+
+/* Main Section */
+
+/* Movie card container */
+
+.card {  
+  width: 22vmax;
+  height: 32vmax;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0,0,0,0.8);
+  border-radius: 1vmin;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Movie poster */
 
 .thumbnail {
-  height: 250px;
-  width: 160px;
-  border-radius: 19px;
-}
-
-.row {
-  margin-left: 40px;
-}
-
-.column {
-  float:left;
-  margin-top: 2px;
-  padding: 10px 10px;
-  margin-right: 4px;
-}
-
-.card {
-  border-radius: 19px;
-  padding: 10px;
-  background-color: #0e1830;
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 1vmin;
+  cursor: pointer;
+  position: absolute;
   
 }
+
+/* Main section grid containing movie cards */
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  column-gap: 2vmin;
+  row-gap: 4vmin;
+  margin: 5vmin 2vmin 5vmin 2vmin;
+}
+
+
+/* Movie information grid (dynamically added on hover) */
+
+.movie-info-grid {
+  grid-row: 2 / 3;
+  padding: 1vmin 1.8vmin 3.5vmin 1.8vmin;
+}
+
+/* Movie info elements */
+
+#rating {
+  margin: 0 auto 0.4vmin 0vmin;
+  color: rgb(4, 231, 103);
+  font-size: 1.8vmin;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
+}
+
+#movie-title {
+  color: white;
+  margin: 0 auto 0 0vmin;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: 2vmin;
+  line-height: 1;
+}
+
+#genre-row {
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-weight: 200;
+  font-size: 1.6vmin;
+}
+
+
+/* Increasing size of movie card & creating space for movie info grid when card is hovered */
+
+.card:hover {
+  display: grid;
+  grid-template-rows: 70% auto;
+  gap: 1vmin;
+  transition-duration: 0.2s;
+  background-color: #000813;
+  border-radius: 1vmin;
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+.card:hover .thumbnail {
+  grid-row: 1 / 2;
+  border-radius: 1vmin 1vmin 0 0;
+  z-index: 10;
+}
+
+
+/* Creating responsive design for different window size */
+
+@media (max-width: 1099px) {
+
+  /* Enabling movie card zoom transition from left to right for 1st card of each row -> to prevent going beyond window */
+
+  /* left-most item */
+  .main :nth-child(4n+1):hover { /* selects every 4th item after 1st item */
+    transform-origin: left;
+  }
+
+  /* Enabling movie card zoom transition from righ to left for last card of each row -> to prevent going beyond window */
+
+  /* Right-most item */
+  .main :nth-child(4n):hover { /* selects every 4th item */
+    transform-origin: right;
+  }
+
+  .site-logo {
+    font-size: 3vmin;
+  }
+
+  .topnav {
+    padding-right: 0.5vmax;
+  }
+
+  form, input {
+    width: 25vw;
+  }
+
+  nav ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  nav ul li {
+    display: inline;
+    margin-right: 0;
+    font-size: 1.8vmin;
+    margin-left: -2vmax;
+  }
+
+  nav ul li :last-child {
+    margin-right: 0;  
+  }
+
+  .card:hover {
+    transform: scale(1.3);
+    grid-template-rows: 65% auto;
+  }
+
+  #genre-row {
+    margin-top: 0.6vmin;
+  }
+
+  #movie-title {
+    font-size: 2.2vmin;
+  }
+
+}
+
+@media (min-width: 1100px) {
+  .card {
+    width: 18vmax;
+    height: 28vmax;
+  }
+  .main {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  /* left-most item */
+  .main :nth-child(5n+1):hover { /* selects every 5th item after 1st item */
+    transform-origin: left;
+  }
+
+  /* Right-most item */
+  .main :nth-child(5n):hover { /* selects every 5th item */
+    transform-origin: right;
+  }
+
+  .card:hover {
+    transform: scale(1.3);
+    grid-template-rows: 60% auto;
+  }
+
+  #rating {
+    font-size: 2vmin;
+  }
+  
+  #movie-title {
+    font-size: 2.6vmin;
+
+  }
+
+  #genre-row {
+    font-size: 1.7vmin;
+  }
+}
+
+@media (max-width: 850px) {
+  .card {
+    width: 33vmin;
+    height: 45vmin;
+  }
+  .main {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .main :nth-child(3n+1):hover { /* selects every 3rd item after 1st item */
+    transform-origin: left;
+  }
+  .main :nth-child(3n):hover { /* selects every 3rd item */
+    transform-origin: right;
+  }
+  .card:hover {
+    transform: scale(1.3);
+    grid-template-rows: 65% auto;
+  }
+}
+
+/* Query result message */
+
+#query {
+  margin-left: 2vmin;
+  color: white;
+}
+
+
+
+
+
+

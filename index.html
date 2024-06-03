@@ -4,20 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinematrix</title>
-  <link rel="icon" href="https://static-00.iconduck.com/assets.00/film-frames-emoji-256x255-3fm6vi6g.png">
+  
   <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://static-00.iconduck.com/assets.00/film-frames-emoji-256x255-3fm6vi6g.png">
+
+  <!-- Font embed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
 </head>
 <body>
+
+  <!-- Top navigation bar -->
   <div class="topnav">
 
-    <a class="site-logo" href="#">&#x1F39E; CineMatrix</a>
+    <!-- Site logo -->
+    <a class="site-logo" href="#">&#x1F39E; Cinematrix</a>
 
+    <!-- Search bar -->
     <div class="search-container">
       <form role="search" id="form">
         <input type="search" id="query" name="q" placeholder="🔎︎ Search movies">
       </form>
     </div>
 
+    <!-- Nav list -->
     <nav>
       <ul><strong>
           <li><a href="#">Home</a></li>
@@ -25,28 +39,29 @@
           <li><a href="#">Reviews</a></li>
           <li><a href="#">Contact</a></li> 
       </strong></ul>
-  </nav>
+    </nav>
     
   </div>
 
+  <!-- Site banner -->
   <header>
     <h1 class="bgimg">&#x1F39E;CineMatrix</h1>
   </header>
 
+  <!-- Movie grid -->
   <section id="section">
 
-    <!-- <div class="row">
-      <div class="column">
-        <div class="card">
-          <div class="center"><img src="scarface.jpg" class="thumbnail" alt=""></div>
-          <h3>Movie Title</h3>
-        </div>
-      </div>
-
+    <!-- Structure of main section -->
+    <!-- <div class="card">
+      <img src="scarface.jpg" class="thumbnail" alt="">
     </div> -->
+
+    <!-- Remaining elements added dynamically on hovering on card -->
 
   </section>
 
+  <script src="genre.js"></script>
   <script src="script.js"></script>
+  
 </body>
 </html>
