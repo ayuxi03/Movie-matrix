@@ -1,3 +1,5 @@
+!["screenshot"](Screenshot.png)
+
 # Cinematrix (HTML | CSS | JS)
 Cinematrix is a web application that displays movie posters using data fetched from the TMDB (The Movie Database) API. It allows users to search for movies by name and view the corresponding movie posters.
 
