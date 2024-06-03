@@ -3,6 +3,7 @@ Cinematrix is a web application that displays movie posters using data fetched f
 
 ### Features
 - Display a grid of movie posters.
+- Display movie details by hovering on a poster
 - Search for movies by name and view the search results as movie posters.
 
 ### Live Demo
