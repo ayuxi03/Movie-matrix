@@ -79,51 +79,59 @@ const addMovieDetails = (divCard, element) => {
   // Adding elements when mouse enters the movie card
   divCard.addEventListener("mouseenter", () => {
 
-  // Creating movie info grid to contain movie details
-  const movieInfo = document.createElement('div');
-  movieInfo.setAttribute('class','movie-info-grid');
+    timeout = setTimeout(() => {
 
-  // Creating other detail elements 
-  const rating = document.createElement('p');
-  rating.setAttribute('id', 'rating');
-  rating.innerText = `Rating: ${Math.round((element.vote_average * 10)) / 10}`
+      divCard.classList.add('hovered');
 
-  const movieTitle = document.createElement('p');
-  movieTitle.setAttribute('id','movie-title');
-  movieTitle.innerText = `${element.title}`;
-  
-  const genreRow = document.createElement('p');
-  genreRow.setAttribute('id','genre-row');
+      // Creating movie info grid to contain movie details
+      const movieInfo = document.createElement('div');
+      movieInfo.setAttribute('class','movie-info-grid');
 
-  // Fetching genre from API. It returns an array of genre-ids
-  const genreArr = element.genre_ids;
-  
-  // Creating an array to contain genre names from ids
-  let movieGenreList = [];
+      // Creating other detail elements 
+      const rating = document.createElement('p');
+      rating.setAttribute('id', 'rating');
+      rating.innerHTML = `Rating: ${Math.round((element.vote_average * 10)) / 10}`
 
-  // Looping in genre id array and storing respective genre names inside movieGenreList array
-  for (let genreId of genreArr) {
+      const movieTitle = document.createElement('p');
+      movieTitle.setAttribute('id','movie-title');
+      movieTitle.innerText = `${element.title}`;
+      
+      const genreRow = document.createElement('p');
+      genreRow.setAttribute('id','genre-row');
 
-    // genreList has been created in a separate genre.js file. It is an object with genre ids as keys and genre names as values. This info has been aquired from TMDb site
+      // Fetching genre from API. It returns an array of genre-ids
+      const genreArr = element.genre_ids;
+      
+      // Creating an array to contain genre names from ids
+      let movieGenreList = [];
 
-    movieGenreList.push(genreList[genreId]);
-    genreRow.innerText += `${genreList[genreId]}`;
-    if (genreId !== genreArr[genreArr.length - 1]) {
-      genreRow.innerText += ` | `;
-    }
-  }
-  
-  // Adding movie detail elements inside the movieInfo grid
-  movieInfo.append(rating);
-  movieInfo.append(movieTitle);
-  movieInfo.append(genreRow);
+      // Looping in genre id array and storing respective genre names inside movieGenreList array
+      for (let genreId of genreArr) {
 
-  // Finally adding movie info grid inside movie card
-  divCard.append(movieInfo);
+        // genreList has been created in a separate genre.js file. It is an object with genre ids as keys and genre names as values. This info has been aquired from TMDb site
+
+        movieGenreList.push(genreList[genreId]);
+        genreRow.innerText += `${genreList[genreId]}`;
+        if (genreId !== genreArr[genreArr.length - 1]) {
+          genreRow.innerText += ` | `;
+        }
+      }
+      
+      // Adding movie detail elements inside the movieInfo grid
+      movieInfo.append(rating);
+      movieInfo.append(movieTitle);
+      movieInfo.append(genreRow);
+
+      // Finally adding movie info grid inside movie card
+      divCard.append(movieInfo);
+    },400);
+
   });
 
   // Creating an event for when the mouse leaves the movie card -> movieInfo grid is removed from the movie card
   divCard.addEventListener("mouseleave", () => {
+    divCard.classList.remove('hovered');
+    clearTimeout(timeout);
     while (divCard.children.length > 1) {
       divCard.removeChild(divCard.lastChild);
     }

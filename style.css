@@ -120,7 +120,7 @@ header {
 .card {  
   width: 22vmax;
   height: 32vmax;
-  box-shadow: 0.5rem 0.5rem 1rem rgba(0,0,0,0.8);
+  box-shadow: 0.5rem 0.5rem 1rem 0.4rem rgba(0,0,0,0.8);
   border-radius: 1vmin;
   position: relative;
   overflow: hidden;
@@ -186,18 +186,19 @@ header {
 
 /* Increasing size of movie card & creating space for movie info grid when card is hovered */
 
-.card:hover {
+.card.hovered {
   display: grid;
   grid-template-rows: 70% auto;
   gap: 1vmin;
   transition-duration: 0.2s;
+  transition-timing-function: ease;
   background-color: #000813;
   border-radius: 1vmin;
   transform: scale(1.2);
-  z-index: 10;
+  z-index: 10;  
 }
 
-.card:hover .thumbnail {
+.card.hovered .thumbnail {
   grid-row: 1 / 2;
   border-radius: 1vmin 1vmin 0 0;
   z-index: 10;
@@ -206,19 +207,19 @@ header {
 
 /* Creating responsive design for different window size */
 
-@media (max-width: 1099px) {
+@media (max-width: 1099px) and  (min-width: 871px) {
 
   /* Enabling movie card zoom transition from left to right for 1st card of each row -> to prevent going beyond window */
 
   /* left-most item */
-  .main :nth-child(4n+1):hover { /* selects every 4th item after 1st item */
+  .main :nth-child(4n+1).hovered { /* selects every 4th item after 1st item */
     transform-origin: left;
   }
 
   /* Enabling movie card zoom transition from righ to left for last card of each row -> to prevent going beyond window */
 
   /* Right-most item */
-  .main :nth-child(4n):hover { /* selects every 4th item */
+  .main :nth-child(4n).hovered { /* selects every 4th item */
     transform-origin: right;
   }
 
@@ -250,7 +251,7 @@ header {
     margin-right: 0;  
   }
 
-  .card:hover {
+  .card.hovered {
     transform: scale(1.1);
     grid-template-rows: 65% auto;
   }
@@ -274,16 +275,16 @@ header {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
   /* left-most item */
-  .main :nth-child(5n+1):hover { /* selects every 5th item after 1st item */
+  .main :nth-child(5n+1).hovered { /* selects every 5th item after 1st item */
     transform-origin: left;
   }
 
   /* Right-most item */
-  .main :nth-child(5n):hover { /* selects every 5th item */
+  .main :nth-child(5n).hovered { /* selects every 5th item */
     transform-origin: right;
   }
 
-  .card:hover {
+  .card.hovered {
     transform: scale(1.1);
     grid-template-rows: 60% auto;
   }
@@ -312,13 +313,13 @@ header {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1vw;
   }
-  .main :nth-child(3n+1):hover { /* selects every 3rd item after 1st item */
+  .main :nth-child(3n+1).hovered { /* selects every 3rd item after 1st item*/
     transform-origin: left;
   }
-  .main :nth-child(3n):hover { /* selects every 3rd item */
+   .main :nth-child(3n).hovered { /* selects every 3rd item */
     transform-origin: right;
-  }
-  .card:hover {
+  } 
+  .card.hovered {
     transform: scale(1.1);
     grid-template-rows: 65% auto;
   }
