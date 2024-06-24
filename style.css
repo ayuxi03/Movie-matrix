@@ -124,6 +124,7 @@ header {
   border-radius: 1vmin;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 /* Movie poster */
@@ -132,7 +133,6 @@ header {
   width: 100%;
   height: 100%;
   border-radius: 1vmin;
-  cursor: pointer;
   position: absolute;
   
 }
@@ -148,6 +148,25 @@ header {
   margin: 5vmin 3vmin 5vmin 3vmin;
 }
 
+/* Increasing size of movie card & creating space for movie info grid when card is hovered */
+
+.card.hovered {
+  display: grid;
+  grid-template-rows: 70% auto;
+  gap: 1vmin;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  background-color: #000813;
+  border-radius: 1vmin;
+  transform: scale(1.2);
+  z-index: 10;  
+}
+
+.card.hovered .thumbnail {
+  grid-row: 1 / 2;
+  border-radius: 1vmin 1vmin 0 0;
+  z-index: 10;
+}
 
 /* Movie information grid (dynamically added on hover) */
 
@@ -168,7 +187,7 @@ header {
 
 #movie-title {
   color: white;
-  margin: 0 auto 0 0vmin;
+  margin: 0 auto 0 0;
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
@@ -181,27 +200,62 @@ header {
   font-family: "Nunito", sans-serif;
   font-weight: 200;
   font-size: 1.6vmin;
+  margin-top: 0.5vmin;
+  margin-bottom: 0;
 }
 
+/* Movie plot displayed on clicking the down arrow */
 
-/* Increasing size of movie card & creating space for movie info grid when card is hovered */
-
-.card.hovered {
-  display: grid;
-  grid-template-rows: 70% auto;
-  gap: 1vmin;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
+/* Movie plot container */
+.movie-plot {  
+  visibility: hidden;
+  margin-top: 85%;
   background-color: #000813;
-  border-radius: 1vmin;
-  transform: scale(1.2);
-  z-index: 10;  
+  position: absolute;
+  padding: 1vw;
+  z-index: 11;
+  /* height: 20vmin; */
 }
 
-.card.hovered .thumbnail {
-  grid-row: 1 / 2;
-  border-radius: 1vmin 1vmin 0 0;
-  z-index: 10;
+/* Movie plot text */
+#movie-plot-text {
+  color: white;
+  font-size: 1.8vh;
+  font-family: "Nunito", sans-serif;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow-y: scroll;
+  margin-bottom: 0;
+}
+
+/* Adding scrollbar */
+
+#movie-plot-text::-webkit-scrollbar {
+  width: 9px; /* Width of the scrollbar */
+  height: 3px;
+}
+
+#movie-plot-text::-webkit-scrollbar-track {
+  background: #f1f1f11f; /* Background of the scrollbar track */
+}
+
+#movie-plot-text::-webkit-scrollbar-thumb {
+  background: #3a424b; /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Rounded corners for the scrollbar thumb */
+}
+
+#movie-plot-text::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+/* Arrow to expand and contract plot container */
+#plot-expand-arrow {
+  all: unset;
+  color: white;
+  font-size: 1.5vmin;
+  margin: 0 47%;
+  cursor: pointer;
 }
 
 
@@ -256,12 +310,21 @@ header {
     grid-template-rows: 65% auto;
   }
 
+  .movie-info-grid {
+    padding-top: 0.2vw;
+  }
+
+  #rating {
+    font-size: 1.3vw;
+  }
+
   #genre-row {
-    margin-top: 0.6vmin;
+    margin-top: 0.4vw;
+    font-size: 1.1vw;
   }
 
   #movie-title {
-    font-size: 2.2vmin;
+    font-size: 1.6vw;
   }
 
 }
@@ -294,12 +357,16 @@ header {
   }
   
   #movie-title {
-    font-size: 2.6vmin;
+    font-size: 2.3vh;
 
   }
 
   #genre-row {
     font-size: 1.7vmin;
+  }
+
+  #movie-plot-text {
+    font-size: 2vh;
   }
 }
 
@@ -323,6 +390,9 @@ header {
     transform: scale(1.1);
     grid-template-rows: 65% auto;
   }
+  #movie-plot-text {
+    font-size: 2vh;
+  }
 }
 
 /* Query result message */
@@ -331,6 +401,9 @@ header {
   margin-left: 2vmin;
   color: white;
 }
+
+
+
 
 
 

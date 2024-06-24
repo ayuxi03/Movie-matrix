@@ -117,13 +117,52 @@ const addMovieDetails = (divCard, element) => {
         }
       }
       
+      // Creating container and text for movie plot
+
+      const moviePlotBox = document.createElement('div');
+      moviePlotBox.setAttribute('class','movie-plot');
+
+      const moviePlotText = document.createElement('p');
+      moviePlotText.setAttribute('id','movie-plot-text');
+
+      // Fetching movie plot from API and adding to movie plot container
+
+      moviePlotText.innerHTML = `<strong>Overview:</strong><br>${element.overview}`;
+      moviePlotBox.append(moviePlotText);
+
+      // Creating arrow to expand and collapse plot container
+
+      const expandArrow = document.createElement('button');
+      expandArrow.setAttribute('id','plot-expand-arrow');
+      expandArrow.innerHTML = `&#9660;`;
+
+      const collapseArrow = document.createElement('button');
+      collapseArrow.setAttribute('id','plot-expand-arrow');
+      collapseArrow.innerHTML = `&#9650;`;
+
+      moviePlotBox.append(collapseArrow);
+      
       // Adding movie detail elements inside the movieInfo grid
       movieInfo.append(rating);
       movieInfo.append(movieTitle);
       movieInfo.append(genreRow);
+      movieInfo.append(expandArrow);
 
-      // Finally adding movie info grid inside movie card
+      // Creating function => on clicking expand arrow movie plot container becomes vsible
+      expandArrow.addEventListener('click', () => {
+        moviePlotBox.style.visibility = 'visible';
+        expandArrow.style.visibility = 'hidden';
+      })
+
+      // On clicking collapse arrow movie plot container becomes hidden
+      collapseArrow.addEventListener('click', () => {
+        moviePlotBox.style.visibility = 'hidden';
+        expandArrow.style.visibility = 'visible';
+      })
+
+      // Finally adding movie info grid and movie plot container inside movie card
       divCard.append(movieInfo);
+      divCard.append(moviePlotBox);
     },400);
 
   });
