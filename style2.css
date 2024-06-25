@@ -17,7 +17,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 2vmin;
-  width: 100%;
+  width: 100vw;
   box-sizing: border-box;
 }
 
