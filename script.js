@@ -1,3 +1,6 @@
+//APIKEY = 6d2457bf34d319edab10c57f345ff2e9
+//API READ ACCESS TOKEN = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZDI0NTdiZjM0ZDMxOWVkYWIxMGM1N2YzNDVmZjJlOSIsInN1YiI6IjY2NWEyYTYxODYwMzY5NWQxYjUwOWRmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VY18n8YJ6eoq3MQFRTL-wV4SHSIRPQYfj82hbIiDNiI
+
 const APILINK = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=6d2457bf34d319edab10c57f345ff2e9&page=1';
 const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=6d2457bf34d319edab10c57f345ff2e9&query=";
@@ -147,12 +150,14 @@ const addMovieDetails = (divCard, element) => {
 
       // Creating function => on clicking expand arrow movie plot container becomes vsible
       expandArrow.addEventListener('click', () => {
+        movieInfo.style.visibility = 'hidden';
         moviePlotBox.style.visibility = 'visible';
         expandArrow.style.visibility = 'hidden';
       })
 
       // On clicking collapse arrow movie plot container becomes hidden
       collapseArrow.addEventListener('click', () => {
+        movieInfo.style.visibility = 'visible';
         moviePlotBox.style.visibility = 'hidden';
         expandArrow.style.visibility = 'visible';
       })

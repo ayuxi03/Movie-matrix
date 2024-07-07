@@ -163,7 +163,7 @@ header {
 }
 
 .card.hovered .thumbnail {
-  grid-row: 1 / 2;
+  /* grid-row: 1 / 2; */
   border-radius: 1vmin 1vmin 0 0;
   z-index: 10;
 }
@@ -171,14 +171,16 @@ header {
 /* Movie information grid (dynamically added on hover) */
 
 .movie-info-grid {
+  background-color: rgba(0,5,10,0.95);
   grid-row: 2 / 3;
-  padding: 1vmin 1.8vmin 3.5vmin 1.8vmin;
+  z-index: 11;
+  padding: 1.2vw 1.8vmin 3.5vmin 1.2vw;
 }
 
 /* Movie info elements */
 
 #rating {
-  margin: 0 auto 0.4vmin 0vmin;
+  margin: 0.5vw auto 0.4vmin 0vmin;
   color: rgb(4, 231, 103);
   font-size: 1.8vmin;
   font-weight: 600;
@@ -208,12 +210,14 @@ header {
 
 /* Movie plot container */
 .movie-plot {  
+  grid-row: 1/2;
   visibility: hidden;
   margin-top: 85%;
-  background-color: #000813;
+  background-color: rgba(0,5,10,0.95);
   position: absolute;
   padding: 1vw;
   z-index: 11;
+  height: 100%;
   /* height: 20vmin; */
 }
 
@@ -224,7 +228,8 @@ header {
   font-family: "Nunito", sans-serif;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   overflow-y: scroll;
   margin-bottom: 0;
 }
@@ -311,7 +316,7 @@ header {
   }
 
   .movie-info-grid {
-    padding-top: 0.2vw;
+    padding-top: 0.5vw;
   }
 
   #rating {
@@ -346,27 +351,32 @@ header {
   .main :nth-child(5n).hovered { /* selects every 5th item */
     transform-origin: right;
   }
-
+  .movie-info-grid {
+    padding-top: 0.5vw;
+    padding-left: 0.8vw;
+  }
   .card.hovered {
     transform: scale(1.1);
     grid-template-rows: 60% auto;
   }
 
   #rating {
-    font-size: 2vmin;
+    font-size: 1.1vw;
   }
   
   #movie-title {
-    font-size: 2.3vh;
+    font-size: 1.2vw;
 
   }
 
   #genre-row {
-    font-size: 1.7vmin;
+    font-size: 1vw;
   }
 
   #movie-plot-text {
     font-size: 2vh;
+     -webkit-line-clamp: 5;
+    line-clamp: 5;
   }
 }
 
@@ -390,8 +400,13 @@ header {
     transform: scale(1.1);
     grid-template-rows: 65% auto;
   }
+  .movie-info-grid {
+    padding-top: 0.3vw;
+  }
   #movie-plot-text {
-    font-size: 2vh;
+    font-size: 1.8vw;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 }
 
